@@ -7,11 +7,11 @@ using System.Net;
 
 namespace Catalog.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class CatalogController : BaseController
     {
-         public IProductManager _productManager;
+        public IProductManager _productManager;
         public ILogger<CatalogController> _logger;
         public CatalogController(IProductManager productManager, ILogger<CatalogController> logger)
         {
