@@ -13,10 +13,10 @@ namespace Basket.API.Controllers
     {
         IBasketRepository _basketRepository;
         DiscountGrpcService _discountGrpcService;
-        public BasketController(IBasketRepository basketRepository,DiscountGrpcService discountGrpcService) 
+        public BasketController(IBasketRepository basketRepository/*,DiscountGrpcService discountGrpcService*/) 
         { 
             _basketRepository = basketRepository;
-            _discountGrpcService = discountGrpcService;
+            //_discountGrpcService = discountGrpcService;
         }
 
         [HttpGet]
@@ -41,11 +41,11 @@ namespace Basket.API.Controllers
             {   //TODO: Communicate discount.grpc
                 //calculate latest price
                 //Create discount grpc service
-                foreach(var item in basket.Items)
-                {
-                   var coupon= await _discountGrpcService.GetDiscount(item.ProductId);
-                   item.Price -= coupon.Amount;
-                }
+                //foreach(var item in basket.Items)
+                //{
+                //   var coupon= await _discountGrpcService.GetDiscount(item.ProductId);
+                //   item.Price -= coupon.Amount;
+                //}
                 return CustomResult("Basket modified done.", await _basketRepository.UpdateBasket(basket));
             }
             catch (Exception ex)
