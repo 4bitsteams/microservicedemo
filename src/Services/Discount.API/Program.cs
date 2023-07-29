@@ -1,4 +1,10 @@
+using Discount.API.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+// Add services to the container.
+builder.Services.AddScoped<ICouponRepositroy, CouponRepository>();
 
 // Add services to the container.
 
